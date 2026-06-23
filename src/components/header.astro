@@ -1,26 +1,252 @@
 ---
 const navLinks = [
-  { label: "LAYANAN", path: "/layanan" },
-  { label: "PORTOFOLIO", path: "/portofolio" },
-  { label: "TENTANG", path: "/tentang" }
+  { label: "Home", path: "/" },
+  { label: "Services", path: "/layanan" },
+  { label: "Product", path: "/produk" },
+  { label: "About", path: "/tentang" },
+  { label: "Blog", path: "/blog" },
+  { label: "Kontak", path: "/kontak" }
 ];
 ---
 
-<header class="border-b border-ce-bronze/30 bg-ce-cream sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-    <a href="/" class="flex flex-col">
-      <span class="font-fraunces text-xl font-semibold text-ce-navy tracking-wide">CELESTARA ETERNA</span>
-      <span class="font-mono text-[10px] text-ce-bronze uppercase tracking-widest mt-0.5">CE-00 / Root</span>
-    </a>
-    <nav class="hidden md:flex gap-8">
-      {navLinks.map((link) => (
-        <a 
-          href={link.path} 
-          class="font-mono text-xs text-ce-ink hover:text-ce-gold transition-colors duration-200 uppercase tracking-widest"
-        >
-          {link.label}
-        </a>
-      ))}
-    </nav>
+<nav id="nav">
+  <a href="/" class="nav-brand">
+    <span class="nav-logo">CELESTARA<sup>[ETRN_00]</sup></span>
+    <span class="nav-sub">// Digital Transformation Agency</span>
+  </a>
+
+  <ul class="nav-links">
+    {navLinks.map((link) => (
+      <li><a href={link.path}>{link.label}</a></li>
+    ))}
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-status">
+      <span class="sdot"></span>NODE // ONLINE
+    </div>
+    <a href="/kontak" class="nav-cta">[ Konsultasi Gratis ]</a>
   </div>
-</header>
+
+  <div class="nav-burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div id="mob-menu">
+  <button id="mob-close">[ ✕ TUTUP ]</button>
+  {navLinks.map((link) => (
+    <a href={link.path}>{link.label}</a>
+  ))}
+  <a href="/kontak" class="btn btn-gold" style="margin-top:1rem;"><span>[ Konsultasi Gratis ]</span></a>
+</div>
+
+<style>
+  #nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.2rem var(--wrap-px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    background: rgba(4,8,20,0.78);
+    border-bottom: 1px solid rgba(212,175,55,0.07);
+    transition: padding 0.3s, border-color 0.3s, background 0.3s;
+  }
+
+  #nav.scrolled {
+    padding: 0.9rem var(--wrap-px);
+    background: rgba(4,8,20,0.96);
+    border-bottom-color: var(--border);
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 3px;
+  }
+
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: var(--ls-wide);
+    color: var(--text-1);
+  }
+
+  .nav-logo sup {
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    color: var(--cream);
+    font-weight: 400;
+    letter-spacing: 0;
+    vertical-align: super;
+    margin-left: 3px;
+  }
+
+  .nav-sub {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--text-3);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+  }
+
+  .nav-links a {
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: var(--text-2);
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--text-1); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-status {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    color: var(--nebula);
+    letter-spacing: 0.12em;
+  }
+
+  .sdot {
+    width: 5px; height: 5px;
+    background: var(--cream);
+    border-radius: 50%;
+    box-shadow: 0 0 7px var(--cream);
+    animation: sdot-pulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes sdot-pulse {
+    0%,100% { opacity:1; box-shadow:0 0 7px var(--cream); }
+    50%      { opacity:.45; box-shadow:0 0 3px var(--cream); }
+  }
+
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    font-weight: 700;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1.2rem;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: transparent;
+    display: inline-block;
+  }
+
+  .nav-cta:hover {
+    border-color: var(--gold);
+    background: rgba(212,175,55,0.09);
+    box-shadow: 0 0 18px var(--glow);
+  }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text-1);
+    transition: all 0.3s;
+  }
+
+  #mob-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(2,4,10,0.97);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.25rem;
+    backdrop-filter: blur(24px);
+  }
+
+  #mob-menu.open { display: flex; }
+  
+  #mob-menu a {
+    font-family: var(--font-serif);
+    font-size: var(--text-h2);
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    transition: color 0.2s;
+  }
+
+  #mob-menu a:hover { color: var(--gold); }
+
+  #mob-close {
+    position: absolute;
+    top: 1.4rem; right: var(--wrap-px);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--text-2);
+    cursor: pointer;
+    background: none; border: none;
+  }
+
+  @media (max-width:768px) {
+    .nav-links, .nav-status, .nav-cta { display:none; }
+    .nav-burger { display:flex; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (nav) {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }
+  });
+
+  const burgerBtn = document.getElementById('burger');
+  const closeBtn = document.getElementById('mob-close');
+  const mobMenu = document.getElementById('mob-menu');
+  const mobLinks = mobMenu?.querySelectorAll('a');
+
+  function toggleMenu() {
+    mobMenu?.classList.toggle('open');
+  }
+
+  burgerBtn?.addEventListener('click', toggleMenu);
+  closeBtn?.addEventListener('click', toggleMenu);
+  mobLinks?.forEach(link => link.addEventListener('click', toggleMenu));
+</script>

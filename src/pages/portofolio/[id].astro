@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('portofolio');
+  return entries.map(entry => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`Celestara Eterna | ${entry.data.title}`}>
+  <main class="flex-grow max-w-4xl mx-auto px-8 py-12 w-full">
+    <div class="mb-10 border-b border-ce-bronze/30 pb-8">
+      <a href="/portofolio" class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase hover:text-ce-navy transition-colors block mb-8">
+        &larr; Kembali
+      </a>
+      <span class="font-mono text-ce-bronze text-sm tracking-widest uppercase mb-3 block">{entry.data.id} / Spesifikasi Sistem</span>
+      <h1 class="font-fraunces text-3xl md:text-5xl text-ce-navy mb-6 leading-tight">{entry.data.title}</h1>
+      <div class="flex flex-wrap gap-2 mb-6">
+        {entry.data.tech.map((t) => (
+          <span class="border border-ce-bronze/20 bg-ce-paper px-3 py-1 text-xs font-mono text-ce-ink uppercase">{t}</span>
+        ))}
+      </div>
+      <p class="text-ce-ink/80 text-lg leading-relaxed">{entry.data.description}</p>
+    </div>
+
+    <article class="text-ce-ink/80 text-base md:text-lg leading-relaxed space-y-6">
+      <Content />
+    </article>
+  </main>
+</Layout>

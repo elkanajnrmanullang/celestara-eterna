@@ -9,7 +9,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Celestara Eterna - Arsitektur Digital Presisi untuk Eksekusi Terukur." } = Astro.props;
+const { title, description = "Celestara Eterna - Digital Transformation" } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,11 +24,19 @@ const { title, description = "Celestara Eterna - Arsitektur Digital Presisi untu
     <SEO title={title} description={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600&family=Inter:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-ce-paper text-ce-ink font-inter antialiased selection:bg-ce-gold selection:text-ce-navy flex flex-col min-h-screen">
+  <body>
     <Header />
     <slot />
     <Footer />
+
+    <script>
+      const revObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.rv').forEach(el => revObs.observe(el));
+    </script>
   </body>
 </html>

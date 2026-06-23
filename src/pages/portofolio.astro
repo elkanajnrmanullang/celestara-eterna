@@ -1,26 +1,9 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const projects = [
-  {
-    id: "PRJ-01",
-    title: "LeafGenn",
-    description: "Sistem otomasi leaflet ritel berbasis web yang direkayasa dengan metodologi Extreme Programming.",
-    tech: ["Laravel", "React", "TypeScript"]
-  },
-  {
-    id: "PRJ-02",
-    title: "The Celestern Times",
-    description: "Portal berita digital dengan implementasi arsitektur microservices untuk skalabilitas distribusi konten.",
-    tech: ["React", "Laravel", "Node.js"]
-  },
-  {
-    id: "PRJ-03",
-    title: "SIMONI",
-    description: "Sistem aplikasi mobile berbasis Android untuk manajemen dan sinkronisasi data real-time.",
-    tech: ["Flutter", "Firebase"]
-  }
-];
+const portofolioEntries = await getCollection('portofolio');
+const sortedProjects = portofolioEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const experiences = [
   {
@@ -44,17 +27,17 @@ const experiences = [
         <h2 class="font-mono text-sm text-ce-bronze tracking-widest uppercase">/ Proyek Sistem</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <div class="border border-ce-bronze/30 bg-ce-cream p-6 relative group hover:border-ce-navy transition-colors duration-300">
-            <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase mb-4 block">{project.id}</span>
-            <h3 class="font-fraunces text-xl text-ce-navy mb-3">{project.title}</h3>
-            <p class="text-ce-ink/80 text-sm leading-relaxed mb-6 min-h-[5rem]">{project.description}</p>
-            <div class="flex flex-wrap gap-2">
-              {project.tech.map((t) => (
+        {sortedProjects.map((project) => (
+          <a href={`/portofolio/${project.id}`} class="border border-ce-bronze/30 bg-ce-cream p-6 relative group hover:border-ce-navy transition-colors duration-300 flex flex-col block outline-none">
+            <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase mb-4 block">{project.data.id}</span>
+            <h3 class="font-fraunces text-xl text-ce-navy mb-3 group-hover:text-ce-gold transition-colors">{project.data.title}</h3>
+            <p class="text-ce-ink/80 text-sm leading-relaxed mb-6 min-h-[5rem]">{project.data.description}</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {project.data.tech.map((t) => (
                 <span class="border border-ce-bronze/20 bg-ce-paper px-2 py-1 text-[10px] font-mono text-ce-ink uppercase">{t}</span>
               ))}
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

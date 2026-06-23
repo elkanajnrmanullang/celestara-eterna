@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const contacts = [
+  {
+    id: "COM-01",
+    label: "Surat Elektronik",
+    value: "admin@celestaraeterna.com",
+    action: "mailto:admin@celestaraeterna.com"
+  },
+  {
+    id: "COM-02",
+    label: "Jejaring Profesional",
+    value: "Elkana Juanro Manullang",
+    action: "https://linkedin.com/in/elkanajuanro"
+  },
+  {
+    id: "COM-03",
+    label: "Basis Operasional",
+    value: "Bogor, Jawa Barat",
+    action: "https://maps.google.com/?q=Bogor"
+  }
+];
+---
+
+<Layout title="Celestara Eterna | Kontak">
+  <main class="flex-grow max-w-7xl mx-auto px-8 py-12 w-full">
+    <div class="mb-12 border-b border-ce-bronze/30 pb-8">
+      <span class="font-mono text-ce-bronze text-sm tracking-widest uppercase mb-2 block">/ Saluran Transmisi</span>
+      <h1 class="font-fraunces text-3xl md:text-4xl text-ce-navy mb-4">Inisialisasi Protokol Komunikasi</h1>
+      <p class="text-ce-ink/80 max-w-2xl text-lg">Buka saluran diskusi untuk konsultasi arsitektur digital, pengembangan sistem kustom, atau kolaborasi strategis.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {contacts.map((contact) => (
+        <a href={contact.action} target={contact.action.startsWith('http') ? '_blank' : '_self'} class="border border-ce-bronze/30 bg-ce-cream p-6 flex flex-col hover:border-ce-navy hover:bg-ce-paper transition-all duration-300 outline-none">
+          <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase mb-4 block">{contact.id}</span>
+          <h2 class="font-mono text-xs text-ce-ink uppercase tracking-widest block mb-2">{contact.label}</h2>
+          <p class="font-fraunces text-xl text-ce-navy mt-auto">{contact.value}</p>
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
