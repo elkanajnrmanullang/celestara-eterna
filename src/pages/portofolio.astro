@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    id: "PRJ-01",
+    title: "LeafGenn",
+    description: "Sistem otomasi leaflet ritel berbasis web yang direkayasa dengan metodologi Extreme Programming.",
+    tech: ["Laravel", "React", "TypeScript"]
+  },
+  {
+    id: "PRJ-02",
+    title: "The Celestern Times",
+    description: "Portal berita digital dengan implementasi arsitektur microservices untuk skalabilitas distribusi konten.",
+    tech: ["React", "Laravel", "Node.js"]
+  },
+  {
+    id: "PRJ-03",
+    title: "SIMONI",
+    description: "Sistem aplikasi mobile berbasis Android untuk manajemen dan sinkronisasi data real-time.",
+    tech: ["Flutter", "Firebase"]
+  }
+];
+
+const experiences = [
+  {
+    id: "EXP-01",
+    role: "Fullstack & Backend Development",
+    company: "Winnicode Garuda Teknologi",
+    description: "Merancang dan mengimplementasikan pendekatan microservices yang menjembatani interaksi data antara halaman utama dan panel administrasi."
+  }
+];
+---
+
+<Layout title="Celestara Eterna | Portofolio">
+  <main class="flex-grow max-w-7xl mx-auto px-8 py-12 w-full">
+    <div class="mb-12">
+      <h1 class="font-fraunces text-3xl md:text-4xl text-ce-navy mb-4">Rekam Jejak Eksekusi</h1>
+      <p class="text-ce-ink/80 max-w-2xl text-lg">Dokumentasi portofolio rekayasa perangkat lunak dan spesialisasi sistem yang dikembangkan dengan fokus pada performa backend dan arsitektur fullstack.</p>
+    </div>
+
+    <section class="mb-16">
+      <div class="border-b border-ce-bronze/30 pb-2 mb-6">
+        <h2 class="font-mono text-sm text-ce-bronze tracking-widest uppercase">/ Proyek Sistem</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <div class="border border-ce-bronze/30 bg-ce-cream p-6 relative group hover:border-ce-navy transition-colors duration-300">
+            <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase mb-4 block">{project.id}</span>
+            <h3 class="font-fraunces text-xl text-ce-navy mb-3">{project.title}</h3>
+            <p class="text-ce-ink/80 text-sm leading-relaxed mb-6 min-h-[5rem]">{project.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span class="border border-ce-bronze/20 bg-ce-paper px-2 py-1 text-[10px] font-mono text-ce-ink uppercase">{t}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <div class="border-b border-ce-bronze/30 pb-2 mb-6">
+        <h2 class="font-mono text-sm text-ce-bronze tracking-widest uppercase">/ Rekam Profesional</h2>
+      </div>
+      <div class="flex flex-col gap-4">
+        {experiences.map((exp) => (
+          <div class="border border-ce-bronze/30 bg-ce-paper p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase block mb-1">{exp.id}</span>
+              <h3 class="font-fraunces text-lg text-ce-navy">{exp.role}</h3>
+              <span class="font-mono text-xs text-ce-ink/70 uppercase tracking-widest">{exp.company}</span>
+            </div>
+            <div class="flex-1 md:text-right">
+              <p class="text-ce-ink/80 text-sm leading-relaxed">{exp.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const metrics = [
+  { label: "Identitas Entitas", value: "Elkana Juanro Manullang", suffix: "Founder & CEO" },
+  { label: "Basis Akademik", value: "S1 Teknik Informatika", suffix: "Institut Teknologi Sumatera" },
+  { label: "Spesialisasi Operasional", value: "2 Tahun Eksekusi", suffix: "Fullstack & Backend Web Development" }
+];
+
+const philosophies = [
+  {
+    id: "PHL-01",
+    title: "Analisis Teknikal Terstruktur",
+    desc: "Mengadaptasi presisi pemetaan 'supply and demand' ke dalam arsitektur logika. Setiap alur data dan pemrosesan backend diperhitungkan secara fundamental layaknya pergerakan intrahari untuk efisiensi skalabilitas sistem maksimal."
+  },
+  {
+    id: "PHL-02",
+    title: "Konsistensi Repetisi Menuju Failure",
+    desc: "Resiliensi sistem dibangun melalui rutinitas perbaikan berkelanjutan. Sama halnya dengan hipertrofi mekanis melalui repetisi intensif mingguan, basis kode dieksekusi dengan iterasi konstan hingga mencapai performa puncak tanpa toleransi redundansi."
+  }
+];
+---
+
+<Layout title="Celestara Eterna | Tentang">
+  <main class="flex-grow max-w-7xl mx-auto px-8 py-12 w-full">
+    <div class="mb-12 border-b border-ce-bronze/30 pb-8">
+      <span class="font-mono text-ce-bronze text-sm tracking-widest uppercase mb-2 block">/ Inti Sistem</span>
+      <h1 class="font-fraunces text-3xl md:text-4xl text-ce-navy mb-4">Arsitek Di Balik Logika</h1>
+      <p class="text-ce-ink/80 max-w-2xl text-lg">Menerjemahkan kerumitan operasional menjadi eksekusi digital yang presisi, digerakkan oleh disiplin teknis tingkat tinggi dan fokus absolut pada hasil akhir yang terukur.</p>
+    </div>
+
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+      <div class="lg:col-span-5 border border-ce-bronze/30 bg-ce-cream p-8">
+        <div class="border-b border-ce-bronze/30 pb-4 mb-6">
+          <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase block">IDX-02 / Profil Eksekutif</span>
+        </div>
+        <div class="flex flex-col gap-6">
+          {metrics.map((metric) => (
+            <div>
+              <span class="font-mono text-xs text-ce-ink uppercase tracking-widest block mb-1">{metric.label}</span>
+              <h3 class="font-fraunces text-2xl text-ce-navy">{metric.value}</h3>
+              <span class="text-ce-ink/70 text-sm">{metric.suffix}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        <div class="border-b border-ce-bronze/30 pb-2 mb-2">
+          <h2 class="font-mono text-sm text-ce-bronze tracking-widest uppercase">/ Metodologi & Filosofi Eksekusi</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {philosophies.map((phl) => (
+            <div class="border border-ce-bronze/30 bg-ce-paper p-6 hover:border-ce-navy transition-colors duration-300">
+              <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase mb-4 block">{phl.id}</span>
+              <h3 class="font-fraunces text-lg text-ce-navy mb-3">{phl.title}</h3>
+              <p class="text-ce-ink/80 text-sm leading-relaxed">{phl.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,26 @@
+---
+const navLinks = [
+  { label: "LAYANAN", path: "/layanan" },
+  { label: "PORTOFOLIO", path: "/portofolio" },
+  { label: "TENTANG", path: "/tentang" }
+];
+---
+
+<header class="border-b border-ce-bronze/30 bg-ce-cream sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+    <a href="/" class="flex flex-col">
+      <span class="font-fraunces text-xl font-semibold text-ce-navy tracking-wide">CELESTARA ETERNA</span>
+      <span class="font-mono text-[10px] text-ce-bronze uppercase tracking-widest mt-0.5">CE-00 / Root</span>
+    </a>
+    <nav class="hidden md:flex gap-8">
+      {navLinks.map((link) => (
+        <a 
+          href={link.path} 
+          class="font-mono text-xs text-ce-ink hover:text-ce-gold transition-colors duration-200 uppercase tracking-widest"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

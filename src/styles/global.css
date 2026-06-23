@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ce-navy: #0A1128;
+  --color-ce-ink: #1F2937;
+  --color-ce-gold: #D4AF37;
+  --color-ce-bronze: #CD7F32;
+  --color-ce-cream: #FDFBF7;
+  --color-ce-paper: #F9FAFB;
+  
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "Space Mono", monospace;
+}

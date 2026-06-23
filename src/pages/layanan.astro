@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    id: "SVC-01",
+    category: "Sistem Backend & Microservices",
+    description: "Pengembangan infrastruktur logika server dan API dengan arsitektur skalabel, meminimalisir redundansi pemrosesan data antara antarmuka utama dan panel administrasi.",
+    stack: ["Laravel", "Node.js", "RESTful API", "MySQL"]
+  },
+  {
+    id: "SVC-02",
+    category: "Arsitektur Frontend Terstruktur",
+    description: "Rekayasa antarmuka pengguna berbasis komponen statis maupun dinamis dengan optimasi zero-JS dan rendering hibrida untuk performa skor metrik maksimal.",
+    stack: ["React", "Next.js", "Astro", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    id: "SVC-03",
+    category: "Manajemen Infrastruktur Web",
+    description: "Konfigurasi, pengelolaan domain, dan orkestrasi lingkungan hosting server produksi untuk memastikan stabilitas dan kontinuitas aksesibilitas sistem.",
+    stack: ["Hostinger", "Niagahoster", "Jagoan Hosting", "DNS Management"]
+  }
+];
+---
+
+<Layout title="Celestara Eterna | Layanan">
+  <main class="flex-grow max-w-7xl mx-auto px-8 py-12 w-full">
+    <div class="mb-12 border-b border-ce-bronze/30 pb-8">
+      <span class="font-mono text-ce-bronze text-sm tracking-widest uppercase mb-2 block">/ Parameter Layanan</span>
+      <h1 class="font-fraunces text-3xl md:text-4xl text-ce-navy mb-4">Spesifikasi Kapabilitas Teknis</h1>
+      <p class="text-ce-ink/80 max-w-2xl text-lg">Pemetaan layanan inti Celestara Eterna yang berfokus pada efisiensi baris kode, skalabilitas basis data, dan optimalisasi arsitektur pengiriman konten.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {services.map((svc) => (
+        <div class="border border-ce-bronze/30 bg-ce-cream flex flex-col h-full group hover:border-ce-navy transition-colors duration-300">
+          <div class="p-6 border-b border-ce-bronze/30 bg-ce-paper">
+            <span class="font-mono text-ce-bronze text-[10px] tracking-widest uppercase block mb-3">{svc.id}</span>
+            <h2 class="font-fraunces text-xl text-ce-navy leading-snug">{svc.category}</h2>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <p class="text-ce-ink/80 text-sm leading-relaxed mb-8">{svc.description}</p>
+            <div>
+              <span class="font-mono text-xs text-ce-ink uppercase tracking-widest block mb-3 border-t border-ce-bronze/20 pt-3">Tech Stack:</span>
+              <ul class="flex flex-wrap gap-2">
+                {svc.stack.map((tech) => (
+                  <li class="font-mono text-[10px] text-ce-navy bg-ce-bronze/10 border border-ce-bronze/20 px-2 py-1 uppercase">{tech}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>
